@@ -1,0 +1,1579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mathura Misal - Authentic Marathi taste in a spicy Misal Pav. Order now!">
+    <meta name="keywords" content="Misal Pav, Marathi Food, Indian Snacks, Spicy Food, Pune, Nashik, Mathura Misal">
+    <title>Mathura Misal | The Authentic Misal Pav</title>
+    <link rel="icon" href="img/logo.jpg" type="img/logo.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Marcellus&display=swap" rel="stylesheet">
+    
+    <style>
+        /*
+        ========================================
+        CSS Utility & Base Styles
+        ========================================
+        */
+        :root {
+            /* Replace image placeholders with your actual image paths */
+            /* --hero-img: url('img/banner.png');  */
+            --gallery-img-1: url('images/gallery-1.jpg');
+            --gallery-img-2: url('images/gallery-2.jpg');
+            --gallery-img-3: url('images/gallery-3.jpg');
+
+            /* Color Palette */
+            --color-primary: #FF5733; /* Misal Red/Orange */
+            --color-secondary: #008080; /* Teal/Accent */
+            --color-dark: #333;
+            --color-light: #f4f4f4;
+            --color-white: #fff;
+            --color-bg: #fffbf5; /* Off-white for texture */
+            --color-dark-bg: #111; /* Dark background for About section */
+
+            /* Typography */
+            --font-primary: 'Poppins', sans-serif;
+            --font-display: 'Marcellus', serif;
+            --spacing-unit: 1rem;
+            
+            /* Animations */
+            --transition-speed: 0.3s;
+        }
+
+        /* 1. Base Reset & Typography */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            color: var(--color-dark);
+            background-color: var(--color-bg);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-display);
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-unit);
+            line-height: 1.2;
+        }
+        
+        h1 { font-size: 3rem; }
+        h2 { font-size: 2.2rem; }
+        h3 { font-size: 1.5rem; }
+
+        a {
+            text-decoration: none;
+            color: var(--color-primary);
+            transition: color var(--transition-speed);
+        }
+        
+        a:hover {
+            color: var(--color-secondary);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* 2. Utility Classes */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+        
+        .section-padding {
+            padding: 4rem 0;
+        }
+
+        .text-center { text-align: center; }
+        .text-light { color: var(--color-white); }
+        .bg-dark { background-color: var(--color-dark); }
+        .bg-primary { background-color: var(--color-primary); }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: var(--color-primary);
+            color: var(--color-white);
+            border: 2px solid var(--color-primary);
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background var(--transition-speed), transform var(--transition-speed);
+        }
+        
+        .btn:hover {
+            background: var(--color-secondary);
+            border-color: var(--color-secondary);
+            transform: translateY(-2px);
+        }
+
+        /* Flex Utilities */
+        .flex { display: flex; }
+        .flex-col { flex-direction: column; }
+        .justify-center { justify-content: center; }
+        .items-center { align-items: center; }
+        .space-between { justify-content: space-between; }
+        .wrap { flex-wrap: wrap; }
+        .gap-2 { gap: calc(2 * var(--spacing-unit)); }
+
+        /* Card styles for Menu and Testimonials */
+        .card {
+            background-color: var(--color-white);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: var(--spacing-unit);
+            transition: transform var(--transition-speed);
+        }
+        
+        .card:hover {
+            transform: scale(1.03);
+        }
+
+        /* 3. Layout Specific Styles */
+
+        /* Navigation Bar */
+        .nav {
+            background-color: var(--color-white);
+            padding: 0.75rem var(--spacing-unit);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: fixed; /* Sticky top nav */
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        
+        /* Ensure logo height is accounted for in padding */
+        .nav-logo img {
+            height: 50px; /* Reduced logo size for better fit */
+        }
+
+        .nav-list {
+            list-style: none;
+            display: none; /* Hidden on mobile */
+        }
+        
+        .nav-list a {
+            padding: 0.5rem 0.75rem;
+            color: var(--color-dark);
+            font-weight: 400;
+        }
+        
+        .nav-list a:hover {
+            color: var(--color-primary);
+        }
+
+        /* Toggle Menu for Mobile */
+        .nav-toggle {
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: block;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--hero-img) no-repeat center center/cover;
+            color: var(--color-white);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            /* Nav height is approx 65px on mobile, but using calc for flexibility */
+            margin-top: calc(50px + 1.5rem); 
+            position: relative;
+        }
+        
+       
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: var(--spacing-unit);
+        }
+
+        .hero h1 {
+            color: var(--color-white);
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 3vw, 1.25rem);
+            margin-bottom: 2rem;
+        }
+
+        /* 🍕 About Section (Custom Styles from User) */
+        #about {
+            padding: 80px 0;
+            background-color: var(--color-dark-bg); /* Dark background */
+            color: var(--color-white); /* White text */
+        }
+
+        #about h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--color-primary); /* Use primary color for heading */
+        }
+
+        /* Flex Layout for Left-Right */
+        .about-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: left;
+            color: #f5f5f5; 
+        }
+
+        .about-img {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .about-img img {
+            width: 100%;
+            max-width: 450px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+            transition: transform 0.3s ease;
+        }
+
+        .about-img img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Animation Effects */
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-80px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(80px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .slide-in-left {
+            animation: slideInLeft 1.2s ease forwards;
+        }
+
+        .slide-in-right {
+            animation: slideInRight 1.2s ease forwards;
+        }
+        
+        /* Menu Section */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .menu-item {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .menu-item-img {
+            /* Placeholder image sizing */
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+        
+        .item-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-secondary);
+            margin: 0.5rem 0;
+        }
+
+        /* Gallery Carousel */
+        .gallery-carousel {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 8px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        
+        .carousel-slide {
+            min-width: 100%;
+            height: 400px; /* Adjust height as needed */
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Testimonials Slider (Re-using some carousel logic) */
+        .testimonials-slider {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .testimonials-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        
+        .testimonial-card {
+            min-width: 100%;
+            padding: 2rem;
+            text-align: center;
+            font-style: italic;
+        }
+        
+        .testimonial-card p {
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            font-style: normal;
+            color: var(--color-primary);
+        }
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+            font-family: var(--font-primary);
+        }
+        
+        .contact-form textarea {
+            resize: vertical;
+            height: 120px;
+        }
+
+        /* 4. Animations (Fade-in on scroll) */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        /* 5. Accessibility & Responsiveness (Mobile-First) */
+        @media (min-width: 768px) {
+            h1 { font-size: 4rem; }
+            h2 { font-size: 3rem; }
+            
+            .nav-list {
+                display: flex;
+                /* Reset mobile styles */
+                flex-direction: row !important;
+                position: static !important;
+                background-color: transparent !important;
+                box-shadow: none !important;
+            }
+            
+            .nav-toggle {
+                display: none;
+            }
+            
+            .nav > .container {
+                display: flex;
+                align-items: center;
+            }
+            
+            /* About Section Desktop Layout */
+            .about-content {
+                flex-direction: row;
+                text-align: left;
+            }
+            
+            .about-text {
+                text-align: left;
+            }
+        }
+
+        /* Mobile fixes for animations */
+        @media (max-width: 768px) {
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .about-img {
+                justify-content: center;
+            }
+
+            .about-text {
+                text-align: center;
+            }
+
+            /* Disable slide animations on mobile for simpler performance */
+            .slide-in-left, .slide-in-right {
+                animation: none;
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+   <!-- ✅ NAVBAR -->
+<nav id="nav" class="nav">
+  <div class="container flex space-between items-center">
+
+    <!-- Logo -->
+    <a href="#hero" class="nav-logo">
+      <img src="img/mathuralogo.png" alt="Mathura Misal Logo" style="height: 80px;">
+    </a>
+
+    <!-- Mobile Menu Toggle -->
+    <div class="nav-toggle" id="nav-toggle">☰</div>
+
+    <!-- Menu -->
+    <ul class="nav-list" id="nav-list">
+      <li><a href="#about">About</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#contact">Order Now</a></li>
+
+      <li>
+        <a href="tel:9960000642" class="contact-btn">📞 Contact Now: 9960000642</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<script>
+document.getElementById("nav-toggle").addEventListener("click", function () {
+    document.getElementById("nav-list").classList.toggle("active");
+});
+</script>
+
+<style>
+/* Contact Button */
+.contact-btn {
+  background: #d32f2f;
+  padding: 10px 15px;
+  border-radius: 8px;
+  color: #fff !important;
+  font-weight: bold;
+  display: inline-block;
+}
+
+/* Mobile Menu */
+.nav-toggle {
+  display: none;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-list {
+    display: none;
+    flex-direction: column;
+    background: #fff;
+    width: 100%;
+    padding: 20px 0;
+  }
+
+  .nav-list.active {
+    display: flex;
+  }
+
+  .nav-list li {
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  .contact-btn {
+    font-size: 18px;
+    width: 80%;
+    margin: 0 auto;
+    display: block;
+  }
+}
+</style>
+
+<!-- ✅ HERO SECTION -->
+<section id="hero" class="hero">
+  <video autoplay muted loop playsinline class="hero-video">
+    <source src="img/videoo.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- ✨ Overlay Rectangle with Text -->
+  <div class="hero-overlay-box fade-in">
+    <h1>Mathura Misal</h1>
+    <p>मराठमोळ्या मसाल्याची खरी चव! (The true taste of Marathi spices!)</p>
+    <a href="#menu" class="btn">View Menu & Order</a>
+    <p>Shivaganga apartment, Sant Nagar, Sector 4, Plot 86, near Kendriya Vihar, Moshi, Pune 412105</p>
+    <p>शिवगंगा अपार्टमेंट, संत नगर, सेक्टर ४, प्लॉट ८६, नियर केंद्रिय विहार, मोशी, पुणे ४१२१०५</p>
+  </div>
+  
+</section>
+
+<style>
+  /* 🎥 HERO SECTION */
+.hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-align: center;
+}
+
+/* 🎞️ Fullscreen Video */
+.hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+/* 🟦 Overlay Rectangle Box */
+.hero-overlay-box {
+  position: relative;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 40px 60px;
+  border-radius: 15px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  animation: fadeInUp 1.5s ease;
+}
+
+.hero-overlay-box h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.hero-overlay-box p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+/* 🟠 Button */
+.hero-overlay-box .btn {
+  display: inline-block;
+  padding: 12px 30px;
+  background: #ff5e00;
+  color: white;
+  font-weight: 600;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.hero-overlay-box .btn:hover {
+  background: #ff7b2a;
+}
+
+/* ✨ Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 🧭 NAVBAR OVERLAY STYLES */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;          /* ⭐ FIXED – ensures nav stays above hero */
+  padding: 15px 60px;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav .nav-logo img {
+  height: 70px;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+}
+
+.nav-list li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+.nav-list li a:hover {
+  color: #ff5e00;
+}
+
+/* 📞 Contact Now Button */
+.contact-btn {
+  background: #ff5e00;
+  color: white !important;
+  padding: 10px 18px;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.contact-btn:hover {
+  background: #ff7b2a;
+}
+
+/* 📱 Mobile Navbar */
+.nav-toggle {
+  display: none;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-list {
+    display: none;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.85);
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 100%;                     /* ⭐ dropdown full width */
+    padding: 20px;
+    border-radius: 8px;
+    z-index: 9999;                   /* ⭐ stays on top */
+  }
+
+  .nav-list.active {
+    display: flex;
+  }
+
+  .nav-list li {
+    text-align: center;
+    padding: 12px 0;
+  }
+
+  .contact-btn {
+    background: #ff5e00;
+    padding: 12px 20px;
+    border-radius: 30px;
+    width: 80%;
+    margin: 10px auto;
+    display: block;
+  }
+}
+
+/* 🧭 Fix content hidden under navbar */
+section {
+  padding-top: 120px;
+}
+
+</style>
+
+<script>
+/* 🟢 Small JS for mobile toggle */
+document.getElementById("nav-toggle").addEventListener("click", function() {
+  const navList = document.getElementById("nav-list");
+  navList.style.display = navList.style.display === "flex" ? "none" : "flex";
+});
+</script>
+
+
+
+<br><br>
+
+
+       <!-- 🌶️ ABOUT SECTION -->
+<section id="about" class="section-padding about-section">
+  <div class="overlay"></div> <!-- 🔥 Dark Overlay -->
+
+  <div class="container fade-in">
+    <h2 class="text-center about-title">आमच्याबद्दल (About Us)</h2>
+    <hr class="section-divider">
+
+    <div class="about-content">
+      <!-- 📝 Text -->
+      <div class="about-text slide-in-left">
+        <p>
+          मिसळ पाव हे केवळ एक डिश नाही, ही महाराष्ट्राची ओळख आहे! 
+          <strong>'मथुरा मिसळ'</strong> मध्ये आम्ही तुम्हाला अस्सल कोल्हापुरी कट आणि तांबडा रस्सा ची चव देतो. 
+          प्रत्येक वाटी मिसळात पारंपारिक मसाले आणि ताजे फरसाण यांचा वापर केला जातो, ज्यामुळे तुम्हाला एक 
+          अविस्मरणीय अनुभव मिळेल. आमच्या मसाल्यांची उष्णता आणि चव एकदा चाखल्यावर तुम्ही वारंवार याल!
+        </p>
+
+        <p style="margin-top: 1rem;">
+          <em>
+            (Misal Pav is not just a dish — it’s the identity of Maharashtra! 
+            At <strong>Mathura Misal</strong>, we serve you the authentic taste of 
+            Kolhapuri Kat and Tambada Rassa. Every bowl is crafted with traditional 
+            spices and fresh farsan, ensuring an unforgettable experience.)
+          </em>
+        </p>
+
+        <a href="#menu" class="btn about-btn">Taste Now 🌶️</a>
+      </div>
+
+      <!-- 🍛 Image -->
+      <div class="about-img slide-in-right">
+        <img src="img/imgmisalpav.png" alt="Mathura Misal Image">
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+/* 🌈 ABOUT SECTION WITH BACKGROUND IMAGE */
+.about-section {
+  position: relative;
+  background: url('img/banner.png') center center/cover no-repeat; /* ✅ Your background image */
+  color: #fff;
+  padding: 100px 0;
+  overflow: hidden;
+}
+
+/* 🌚 Overlay Layer */
+.about-section .overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.65); /* semi-transparent overlay */
+  z-index: 1;
+}
+
+.about-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+.about-title {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.section-divider {
+  width: 80px;
+  height: 4px;
+  margin: 15px auto 40px;
+  background: #ff914d;
+  border: none;
+  border-radius: 2px;
+}
+
+/* 🔸 Layout */
+.about-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 3rem;
+}
+
+/* 📝 Text Box */
+.about-text {
+  flex: 1;
+  min-width: 320px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 15px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  line-height: 1.8;
+  font-size: 1.1rem;
+}
+
+.about-text strong {
+  color: #ffb86c;
+}
+
+/* 🍛 Image Styling */
+.about-img {
+  flex: 1;
+  text-align: center;
+}
+
+.about-img img {
+  width: 100%;
+  max-width: 450px;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+  transition: transform 0.5s ease;
+}
+
+.about-img img:hover {
+  transform: scale(1.05);
+}
+
+/* 🔘 Button */
+.about-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 35px;
+  background: #ff5e00;
+  color: #fff;
+  border-radius: 30px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.about-btn:hover {
+  background: #ff7b2a;
+  color: #fff;
+}
+
+/* ✨ Animations */
+.slide-in-left {
+  opacity: 0;
+  transform: translateX(-60px);
+  animation: slideInLeft 1.2s ease forwards;
+}
+
+.slide-in-right {
+  opacity: 0;
+  transform: translateX(60px);
+  animation: slideInRight 1.2s ease forwards;
+}
+
+@keyframes slideInLeft {
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideInRight {
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .about-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  .about-img img {
+    max-width: 100%;
+  }
+}
+</style>
+
+
+       <!-- 🌶️ MENU SECTION -->
+<section id="menu" class="section-padding menu-section">
+  <div class="container text-center fade-in">
+    <h2>लोकप्रिय मेनू (Popular Menu)</h2>
+    <hr class="section-divider">
+
+    <div class="menu-grid" id="menu-items">
+      <!-- Card 1 -->
+      <div class="menu-item card fade-in">
+        <div class="menu-img-wrap">
+          <img src="img/kolhapuri misal.png" alt="Kolhapuri Tikhat Misal" class="menu-item-img">
+        </div>
+        <h3>कोल्हापुरी तिखट मिसळ</h3>
+        <p>The fiery Kolhapuri Misal for the bold!</p>
+        <span class="item-price">₹120</span>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="menu-item card fade-in">
+        <div class="menu-img-wrap">
+          <img src="img/punerimisal.png" alt="Madhyam Misal" class="menu-item-img">
+        </div>
+        <h3>पुणेरी मध्यम मिसळ</h3>
+        <p>Balanced spice and flavor - perfect for everyone.</p>
+        <span class="item-price">₹100</span>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="menu-item card fade-in">
+        <div class="menu-img-wrap">
+          <img src="img/dahimisal.png" alt="Dahi Misal" class="menu-item-img">
+        </div>
+        <h3>दही मिसळ (Cool)</h3>
+        <p>Our classic Misal served with a side of cool curd.</p>
+        <span class="item-price">₹130</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+/* 🌈 MENU SECTION BACKGROUND */
+.menu-section {
+  background: linear-gradient(to bottom right, #fff7f0, #ffe1cc);
+  padding: 100px 0;
+}
+
+/* 🌟 Title */
+.menu-section h2 {
+  font-size: 2.5rem;
+  color: #ff5e00;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.section-divider {
+  width: 80px;
+  height: 4px;
+  background: #ff5e00;
+  border: none;
+  margin: 15px auto 40px;
+  border-radius: 2px;
+}
+
+/* 🍛 GRID LAYOUT */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+}
+
+/* 🧡 CARD DESIGN */
+.menu-item {
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.menu-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(255, 94, 0, 0.25);
+}
+
+/* 🖼️ IMAGE STYLING */
+.menu-img-wrap {
+  overflow: hidden;
+  border-bottom: 5px solid #ff5e00;
+}
+
+.menu-item-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.menu-item:hover .menu-item-img {
+  transform: scale(1.1);
+}
+
+/* 🧾 TEXT CONTENT */
+.menu-item h3 {
+  font-size: 1.6rem;
+  color: #333;
+  margin: 1rem 0 0.5rem;
+  text-transform: capitalize;
+  font-weight: 700;
+}
+
+.menu-item p {
+  font-size: 1rem;
+  color: #666;
+  padding: 0 20px;
+  min-height: 60px;
+}
+
+/* 💰 PRICE TAG */
+.item-price {
+  display: inline-block;
+  background: #ff5e00;
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: 700;
+  border-radius: 30px;
+  padding: 8px 25px;
+  margin-top: 10px;
+  transition: background 0.3s ease;
+}
+
+.menu-item:hover .item-price {
+  background: #ff7b2a;
+}
+
+/* ✨ Animation */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1.2s ease forwards;
+}
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .menu-item h3 {
+    font-size: 1.3rem;
+  }
+  .menu-item p {
+    font-size: 0.9rem;
+  }
+}
+</style>
+
+        
+        <section id="gallery" class="section-padding bg-light">
+    <div class="container text-center fade-in">
+        <h2>गॅलरी (Gallery)</h2>
+        <hr style="width: 50px; margin: 10px auto; border-color: var(--color-primary);">
+
+        <div class="gallery-carousel">
+            <div class="carousel-track">
+                <div class="carousel-slide" style="background-image: url('img/g1.png');"></div>
+<div class="carousel-slide" style="background-image: url('img/g2.png');"></div>
+<div class="carousel-slide" style="background-image: url('img/g3.png');"></div>
+
+                <!-- Duplicate for infinite loop -->
+                <div class="carousel-slide" style="background-image: url('img/g1.png');"></div>
+<div class="carousel-slide" style="background-image: url('img/g2.png');"></div>
+<div class="carousel-slide" style="background-image: url('img/g3.png');"></div>
+            </div>
+        </div>
+    </div>
+</section>
+<style>
+  .gallery-carousel {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+}
+
+.carousel-track {
+    display: flex;
+    width: calc(300%); 
+    animation: scrollGallery 20s linear infinite;
+}
+
+.carousel-slide {
+    min-width: 33.33%;
+    height: 550px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    margin: 0 10px;
+}
+
+/* Animation */
+@keyframes scrollGallery {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+</style>
+
+        <section id="testimonials" class="section-padding">
+            <div class="container text-center fade-in">
+                <h2>ग्राहकांचे अभिप्राय (Testimonials)</h2>
+                <hr style="width: 50px; margin: 10px auto; border-color: var(--color-primary);">
+                
+                <div class="testimonials-slider card">
+                    <div class="testimonials-track" id="testimonials-track">
+                        <div class="testimonial-card">
+                            <p>"Best Misal I've had outside of Nashik! The *Kat* was perfectly spicy and the *Tarri* was rich. Highly recommended!"</p>
+                            <div class="testimonial-author">- Ajay K., Food Blogger</div>
+                        </div>
+                        <div class="testimonial-card">
+                            <p>"My new favorite spot! The service is quick, and the Dahi Misal is a wonderful twist. A truly authentic experience."</p>
+                            <div class="testimonial-author">- Snehal P., Regular Customer</div>
+                        </div>
+                        <div class="testimonial-card">
+                            <p>"मिसळ म्हणजे मथुरा मिसळ! I bring all my friends here when they visit. The taste is consistently amazing."</p>
+                            <div class="testimonial-author">- Rohan M., Local Resident</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+       <!-- Pixar 3D Enquiry Form -->
+<section id="contact" class="pixar-contact section-padding">
+  <div class="container pixar-wrap">
+    <div class="pixar-card">
+      <!-- Left: Pixar 3D character / food image -->
+      <div class="pixar-visual">
+        <img src="img/gallery1.png" alt="Pixar style Misal seller" />
+        <div class="steam">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+
+      <!-- Right: Form -->
+      <div class="pixar-form">
+        <h2>संपर्क / ऑर्डर (Contact / Order)</h2>
+        <p class="sub">Bulk order? Special request? Send details below.</p>
+
+        <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY_HERE">
+          <input type="hidden" name="redirect" value="https://yourdomain.com/thanks.html">
+          <input type="hidden" name="to" value="your.email@example.com">
+          <input type="hidden" name="subject" value="New Inquiry from Pixar Misal Site">
+
+          <div class="row">
+            <input type="text" name="name" placeholder="Full Name *" required>
+            <input type="tel" name="phone" placeholder="Phone Number *" pattern="[0-9]{10}" required>
+            <input type="email" name="email" placeholder="Email (optional)">
+          </div>
+
+          <textarea name="message" placeholder="Order details " required></textarea> 
+
+          <div class="form-actions">
+            <!-- <button type="submit" class="btn-submit">Send Order</button> -->
+            <a class="btn-whatsapp" href="https://wa.me/919960000642?text=Hello%20I%20want%20to%20order%20misal" target="_blank" rel="noopener">Order via WhatsApp</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+  /* Pixar 3D Enquiry Form CSS */
+.pixar-contact { padding: 60px 0; background: linear-gradient(135deg, #A85C00, #D07A0A, #F5A623, #FFCF73);
+ color:#222; }
+.pixar-wrap { max-width:1100px; margin:0 auto; padding:20px; }
+.pixar-card {
+  display:flex; gap:28px; align-items:center;
+  background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.75));
+  border-radius:20px; padding:18px; box-shadow: 0 20px 50px rgba(0,0,0,0.18);
+  transform-style: preserve-3d;
+}
+
+/* Left visual */
+.pixar-visual { flex: 0 0 44%; position:relative; display:flex; align-items:center; justify-content:center; padding:18px; }
+.pixar-visual img {
+  width:100%; max-width:360px; border-radius:18px;
+  transform: perspective(800px) rotateY(-6deg) translateZ(6px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+  transition: transform .35s ease;
+}
+.pixar-visual img:hover { transform: perspective(800px) rotateY(-2deg) translateZ(10px) scale(1.02); }
+
+/* little steam effect above bowl */
+.pixar-visual .steam { position:absolute; top:14%; left:22%; width:120px; height:120px; pointer-events:none; }
+.pixar-visual .steam span {
+  position:absolute; left:50%; width:12px; height:40px; background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.05));
+  border-radius:10px; opacity:0.7; transform-origin: bottom center; animation: steamUp 3.2s linear infinite;
+}
+.pixar-visual .steam span:nth-child(1){ left:35%; animation-delay:0s; }
+.pixar-visual .steam span:nth-child(2){ left:50%; height:48px; animation-delay:0.6s; }
+.pixar-visual .steam span:nth-child(3){ left:68%; animation-delay:1.1s; }
+
+@keyframes steamUp {
+  0% { transform: translateY(18px) scale(0.8); opacity:0; }
+  30% { opacity:0.8; }
+  100% { transform: translateY(-70px) scale(1.1); opacity:0; }
+}
+
+/* Right form */
+.pixar-form { flex:1; padding:22px 12px; }
+.pixar-form h2 { margin:6px 0 6px; font-size:1.6rem; color:#111; }
+.pixar-form .sub { margin-bottom:12px; color:#333; opacity:0.9; }
+
+/* Inputs */
+.contact-form .row { display:flex; gap:12px; margin-bottom:12px; }
+.contact-form input[type="text"],
+.contact-form input[type="tel"],
+.contact-form input[type="email"],
+.contact-form textarea {
+  flex:1; padding:12px 14px; border-radius:12px; border:none; font-size:1rem;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 6px 18px rgba(0,0,0,0.06);
+  background: linear-gradient(180deg, #fff, #fffefa);
+  outline: none;
+}
+.contact-form textarea { min-height:120px; resize:vertical; margin-bottom:12px; }
+
+/* Buttons */
+.form-actions { display:flex; gap:12px; align-items:center; }
+.btn-submit {
+  background: linear-gradient(90deg,#101010,#af002d);
+  color:#fff; padding:12px 18px; border-radius:12px; border:none; font-weight:700; cursor:pointer;
+  box-shadow: 0 12px 30px rgba(175,0,45,0.18);
+}
+.btn-submit:hover { transform: translateY(-3px); transition: .25s; }
+.btn-whatsapp {
+  display:inline-block; padding:10px 14px; border-radius:12px; background:#25D366; color:#fff; text-decoration:none; font-weight:700;
+  box-shadow: 0 6px 18px rgba(37,211,102,0.18);
+}
+
+/* Responsive */
+@media (max-width: 880px) {
+  .pixar-card { flex-direction:column; padding:16px; }
+  .pixar-visual { flex-basis: auto; width:100%; }
+  .pixar-form { width:100%; }
+  .contact-form .row { flex-direction:column; }
+}
+
+/* Small polish */
+.contact-form input:focus, .contact-form textarea:focus { box-shadow: 0 10px 30px rgba(0,0,0,0.12); }
+
+</style>
+
+    </main>
+
+    <footer class="bg-dark text-light text-center" style="padding: 2rem 0;">
+    <div class="container">
+        <p>
+            Copyrights © 2025 All Rights Reserved by 
+            <a href="https://clinchsoft.com" target="_blank" style="color: #ffcc00; text-decoration: none;">
+                Clinchsoft
+            </a>
+        </p>
+    </div>
+</footer>
+<style>
+  footer a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+</style>
+
+<!-------------------------whatsapp icons ---------------->
+<style>
+.floating-icons {
+    position: fixed;
+    right: 20px;
+    bottom: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 9999;
+}
+
+/* Floating Button Style */
+.float-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    transition: 0.3s ease;
+    overflow: hidden;
+
+    /* Add animation */
+    animation: floatUpDown 2s ease-in-out infinite, glowPulse 2s infinite;
+}
+
+/* Inside Image */
+.float-btn img {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+}
+
+/* Hover Animation */
+.float-btn:hover {
+    transform: scale(1.15);
+}
+
+/* Up–Down Floating Animation */
+@keyframes floatUpDown {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-8px); }
+    100% { transform: translateY(0); }
+}
+
+/* Soft Glow Animation */
+@keyframes glowPulse {
+    0%   { box-shadow: 0 0 8px rgba(0, 255, 0, 0.3); }
+    50%  { box-shadow: 0 0 18px rgba(0, 255, 0, 0.6); }
+    100% { box-shadow: 0 0 8px rgba(0, 255, 0, 0.3); }
+}
+</style>
+
+<div class="floating-icons">
+    <!-- WhatsApp 3D Icon -->
+    <a href="https://wa.me/919960000642" target="_blank" class="float-btn">
+        <img src="img/whatsapp-logo-3d-render-removebg-preview.png" alt="WhatsApp">
+    </a>
+
+    <!-- Call 3D Icon -->
+    <a href="tel:+919960000642" class="float-btn">
+        <img src="img/call.png" alt="Call">
+    </a>
+</div>
+
+
+<!-----------call popup----->
+<button id="orderBtn">Order Now</button>
+
+<!-- Popup -->
+<div id="orderPopup" class="popup">
+  <div class="popup-content">
+    <span id="closePopup">&times;</span>
+    <h3>Call Now</h3>
+    <p>For quick order, call us at:</p>
+    <h2 style="margin:10px 0;">99600 00642</h2>
+
+    <a href="tel:+91 9960000642" class="call-btn">📞 Call Now</a>
+  </div>         +
+</div>
+<style>
+  .popup {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.65);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.popup-content {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  width: 300px;
+  animation: zoom 0.3s ease;
+}
+
+#closePopup {
+  float: right;
+  cursor: pointer;
+  font-size: 22px;
+  color: #333;
+}
+
+.call-btn {
+  display: block;
+  background: #28a745;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  margin-top: 15px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.call-btn:hover {
+  background: #218838;
+}
+
+@keyframes zoom {
+  from { transform: scale(0.5); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+</style>
+
+<script>
+const popup = document.getElementById("orderPopup");
+const closeBtn = document.getElementById("closePopup");
+
+// show popup every 5 seconds
+setInterval(() => {
+  popup.style.display = "flex";
+}, 5000);
+
+closeBtn.onclick = function() {
+  popup.style.display = "none";
+}
+
+document.getElementById("orderBtn").onclick = function() {
+  popup.style.display = "flex";
+}
+</script>
+
+
+
+
+
+
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- 1. Mobile Navigation Toggle ---
+            const navToggle = document.getElementById('nav-toggle');
+            const navList = document.getElementById('nav-list');
+
+            navToggle.addEventListener('click', () => {
+                // Toggle display style for mobile menu (e.g., flex-direction: column)
+                if (navList.style.display === 'flex') {
+                    navList.style.display = 'none';
+                } else {
+                    // For mobile menu dropdown
+                    navList.style.display = 'flex';
+                    navList.style.flexDirection = 'column';
+                    navList.style.position = 'absolute';
+                    navList.style.top = '100%';
+                    navList.style.left = '0';
+                    navList.style.width = '100%';
+                    navList.style.backgroundColor = 'var(--color-white)';
+                    navList.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.1)';
+                }
+            });
+            
+            // Close menu when a link is clicked (on mobile)
+            document.querySelectorAll('.nav-list a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth < 768) {
+                        navList.style.display = 'none';
+                    }
+                });
+            });
+
+
+            
+
+            
+            // --- 3. Gallery Carousel (Autoplay) ---
+            const galleryTrack = document.getElementById('gallery-track');
+            const slides = document.querySelectorAll('.gallery-carousel .carousel-slide');
+            let slideIndex = 0;
+            let currentSlideWidth = slides.length > 0 ? slides[0].offsetWidth : 0;
+
+            const updateGalleryCarousel = () => {
+                // Recalculate width just before update to ensure accuracy
+                currentSlideWidth = slides.length > 0 ? slides[0].offsetWidth : 0;
+                galleryTrack.style.transform = `translateX(-${slideIndex * currentSlideWidth}px)`;
+            };
+
+            const nextSlide = () => {
+                slideIndex = (slideIndex + 1) % slides.length;
+                updateGalleryCarousel();
+            };
+            
+            // Autoplay: Change slide every 4 seconds
+            setInterval(nextSlide, 4000); 
+
+            // Re-calculate width on resize (for responsiveness)
+            window.addEventListener('resize', updateGalleryCarousel); // Use the updated function
+
+
+            // --- 4. Testimonials Slider ---
+            const testimonialsTrack = document.getElementById('testimonials-track');
+            const testimonialCards = document.querySelectorAll('.testimonial-card');
+            let testimonialIndex = 0;
+            let currentCardWidth = testimonialCards.length > 0 ? testimonialCards[0].offsetWidth : 0;
+
+            const updateTestimonialsSlider = () => {
+                // Recalculate width just before update to ensure accuracy
+                currentCardWidth = testimonialCards.length > 0 ? testimonialCards[0].offsetWidth : 0;
+                testimonialsTrack.style.transform = `translateX(-${testimonialIndex * currentCardWidth}px)`;
+            };
+
+            const nextTestimonial = () => {
+                testimonialIndex = (testimonialIndex + 1) % testimonialCards.length;
+                updateTestimonialsSlider();
+            };
+
+            // Autoplay: Change testimonial every 6 seconds
+            setInterval(nextTestimonial, 6000); 
+
+            // Re-calculate width on resize
+            window.addEventListener('resize', updateTestimonialsSlider);
+
+
+            // --- 5. Fade-In on Scroll Animation ---
+            const faders = document.querySelectorAll('.fade-in');
+
+            const appearOptions = {
+                threshold: 0.2, // Start animation when 20% of element is visible
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const appearOnScroll = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    }
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                });
+            }, appearOptions);
+
+            faders.forEach(fader => {
+                appearOnScroll.observe(fader);
+            });
+
+        });
+    </script>
+</body>
+</html>
